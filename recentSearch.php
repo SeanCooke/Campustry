@@ -46,7 +46,7 @@
   <div class="container">
     <ul class="nav nav-tabs">
       <li ><a href="search.php">Basic</a></li>
-      <li ><a href="advanceSearch.php">Advanced</a></li>
+      <li ><a href="advancedSearch.php">Advanced</a></li>
       <li class="active"><a href="recentSearch.php">Recent</a></li>
     </ul><br><br>
     <div class="row">
