@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Bootstrap Example</title>
+  <title>Campustry | Profile</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
@@ -22,20 +22,20 @@
       </div>
       <div class="collapse navbar-collapse" id="myNavbar">
         <ul class="nav navbar-nav">
-          <li ><a href="search.html"><span class="glyphicon glyphicon-search"></span> Search</a></li>
+          <li ><a href="search.php"><span class="glyphicon glyphicon-search"></span> Search</a></li>
           <li class="active"><a class="dropdown-toggle" data-toggle="dropdown" href=""><span class="glyphicon glyphicon-user"></span> Profile
             <span class="caret"></span></a>
             <ul class="dropdown-menu">
-              <li><a href="viewProfile.html">View</a></li>
-              <li><a href="editProfile.html">Edit</a></li>
+              <li><a href="viewProfile.php">View</a></li>
+              <li><a href="editProfile.php">Edit</a></li>
             </ul>
           </li>
-          <li><a href="messages.html"><span class="glyphicon glyphicon-envelope"></span> Messages<span class="badge">2</span></a></li> 
+          <li><a href="messages.php"><span class="glyphicon glyphicon-envelope"></span> Messages<span class="badge">2</span></a></li> 
         </ul>
         <ul class="nav navbar-nav navbar-right">
-          <li><a href="viewProfile.html"><img src="images/john_doe.jpg" class="img-circle" alt="Cinque Terre" width="25" height="25"> John</a></li>
+          <li><a href="viewProfile.php"><img src="images/john_doe.jpg" class="img-circle" alt="Cinque Terre" width="25" height="25"> John</a></li>
           <li><a href="#"><span class="glyphicon glyphicon-cog"></span> Settings</a></li>
-          <li><a href="login.html"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+          <li><a href="index.php"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
         </ul>
       </div>
     </div>
@@ -78,7 +78,7 @@
       </div>
       <div class="panel-footer">
         <ul class="pager">
-          <li ><a href="searchResults.html">Back to search results</a></li>
+          <li ><a href="searchResults.php">Back to search results</a></li>
         </ul>
       </div>
     </div>

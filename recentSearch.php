@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Bootstrap Example</title>
+  <title>Campustry | Recent Searches</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
@@ -9,6 +9,7 @@
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 </head>
 <body>
+
   <nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container-fluid">
       <div class="navbar-header">
@@ -21,20 +22,20 @@
       </div>
       <div class="collapse navbar-collapse" id="myNavbar">
         <ul class="nav navbar-nav">
-          <li class="active"><a href="search.html"><span class="glyphicon glyphicon-search"></span> Search</a></li>
+          <li class="active"><a href="search.php"><span class="glyphicon glyphicon-search"></span> Search</a></li>
           <li><a  class="dropdown-toggle" data-toggle="dropdown" href="#"><span class="glyphicon glyphicon-user"></span> Profile
             <span class="caret"></span></a>
             <ul class="dropdown-menu">
-              <li><a href="viewProfile.html">View</a></li>
-              <li><a href="editProfile.html">Edit</a></li>
+              <li><a href="viewProfile.php">View</a></li>
+              <li><a href="editProfile.php">Edit</a></li>
             </ul>
           </li>
-          <li><a href="messages.html"><span class="glyphicon glyphicon-envelope"></span> Messages<span class="badge">2</span></a></li> 
+          <li><a href="messages.php"><span class="glyphicon glyphicon-envelope"></span> Messages<span class="badge">2</span></a></li> 
         </ul>
         <ul class="nav navbar-nav navbar-right">
-          <li><a href="viewProfile.html"><img src="images/john_doe.jpg" class="img-circle" alt="Cinque Terre" width="25" height="25"> John</a></li>
+          <li><a href="viewProfile.php"><img src="images/john_doe.jpg" class="img-circle" alt="Cinque Terre" width="25" height="25"> John</a></li>
           <li><a href="#"><span class="glyphicon glyphicon-cog"></span> Settings</a></li>
-          <li><a href="login.html"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+          <li><a href="index.php"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
         </ul>
       </div>
     </div>
@@ -44,24 +45,27 @@
 
   <div class="container">
     <ul class="nav nav-tabs">
-      <li class="active"><a href="search.html">Basic</a></li>
-      <li ><a href="advanceSearch.html">Advanced</a></li>
-      <li><a href="recentSearch.html">Recent</a></li>
-    </ul><br><br><br><br><br>
-
+      <li ><a href="search.php">Basic</a></li>
+      <li ><a href="advanceSearch.php">Advanced</a></li>
+      <li class="active"><a href="recentSearch.php">Recent</a></li>
+    </ul><br><br>
     <div class="row">
       <div class="col-sm-2"></div>
       <div class="col-sm-8">
         <div class="panel panel-default">
+          <div class="panel-heading" align="center">Search history</div>
           <div class="panel-body">
-            <form role="form" action="searchResults.html">
-              <div class="form-group">
-                <input class="form-control input-lg" id="inputlg" type="text" placeholder = "Name, Email, Classes..."><br>
-                <button type="submit" class="btn btn-default btn-lg">
-                  <span class="glyphicon glyphicon-search"></span> Search
-                </button>
-              </div>
-            </form>
+            <ul class="list-group">
+              <li class="list-group-item">
+                <a href="viewProfile.php"><h4>Alan Pitch</h4></a>
+              </li>
+              <li class="list-group-item">
+                <a href="#"><h4>Robert peter</h4></a>
+              </li>
+              <li class="list-group-item">
+                <a href="#"><h4>Ian streak</h4></a>
+              </li>
+            </ul>
           </div>
         </div>
         <div class="col-sm-2"></div>
