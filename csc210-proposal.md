@@ -1,38 +1,26 @@
 Campustry - Project Proposal
+============================
 
-What is the proposed name for your Web application? (Make your GitHub repository name similar to your project name).
+### Sean Cooke & Kailash Joshi
 
-The name of our web application is Campustry.  Campustry’s GitHub repository can be found here.
+---
 
-Who is the target audience for your Web application?
-Campustry’s target audience is college students looking to connect with other students, faculty and alumni on a professional level.
+[Campustry](http://campustry.com/) is an academic, [open source](https://github.com/SeanCooke/Campustry) social media site for college students, professors and alumni.  Campustry’s target audience is people affiliated with universities looking to connect with other students, faculty and alumni on a formal level.  On Campustry *you can...*:
 
-What problem is it intended to solve for that audience?
+> + Get to know your fellow students (college classes can be anti-social).
+> +	See what your colleagues’ scholarly interests are and what they are working on.
+> +	Send professional messages to other students and professors.
+> + See which courses a professor teaches.
+> +	Connect with alumni for networking opportunities.
 
-•	Get to know your fellow students (college classes can be anti-social).
-•	See what your colleagues’ academic interests are and what they are working on.
-•	Send professional messages to other students and professors.
-•	Connect with alumni for networking opportunities.
-•	See which courses a professor teaches.
+Users of Campustry can:
 
-How will it meet the minimum project requirements?
+> **Create** – Create an account.
+>
+> **Read**   – View other student’s and professors' accounts.
+>
+> **Update** – Update their scholarly interests and academic projects.
+>
+> **Delete** – Remove information from their profile.  A users profile cannot be permanently deleted, only deactivated.
 
-Create – Users can create an account
-
- 
-
-
-
-Read – Users can view other student’s and professors accounts
-
- 
-
-Update – Users can update their academic interests and professional projects
-Delete – Users can delete information in their profile.  Their profile cannot be permanently deleted, only deactivated
-
-Why is your proposed Web application unique or creative beyond simply meeting the minimum requirements?
-
-Campustry is unique because it is a more professional version of Facebook for college students.  In college, many students don’t know much about their classmates.  Campustry is a place to get to know your classmates on a more professional, rather than a purely social level.  For example, there is currently a stigma attached to sending a random classmate a Facebook message related to a group project but there is no stigma in sending that same person a Campustry message.
-
-
-
+Campustry is different because it is a formal social media site for people associated with universities.  In college, many students don’t know much about their classmates.  Campustry is the place to get to know your classmates on a more professional, rather than a purely social level.
