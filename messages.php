@@ -11,7 +11,7 @@
 <body>
 
   <?php
-    require '/var/www/html/includes/header.php';
+    require 'includes/header.php';
   ?>
 
   <br><br><br><br>

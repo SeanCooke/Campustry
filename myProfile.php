@@ -28,9 +28,9 @@
           <div class="col-sm-12">
             <div class="row">
               <div class="col-sm-4">
-                <img src="images/Koala.jpg" class="img-circle" alt="Cinque Terre" width="300" height="250">
+                <img src="images/john_doe.jpg" class="img-circle" alt="Cinque Terre" width="300" height="250">
               </div>
-              <div class="col-sm-5"><a href="#"><h3>Alan Pitch</h3></a>First year, Undergraduate, Computer Science<br><br>
+              <div class="col-sm-5"><a href="#"><h3>John Doe</h3></a>First year, Undergraduate, Computer Science<br><br>
                 <span class="label label-primary">Email Address</span> : apitch@ur.rochester.edu<br><br>
                 <span class="label label-primary">Contact</span> : 585-123-4567<br><br>
                 <span class="label label-primary">Courses</span> : CSC254, CSC171, CSC170<br><br>
@@ -42,7 +42,7 @@
               <div class="col-sm-3"><br>
                 <button type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#myModal">Send message</button><br>
                 <div class="panel panel-default">
-                  <div class="panel-heading" align="center">Connect with <b>Alan</b></div>
+                  <div class="panel-heading" align="center">Connect with <b>John</b></div>
                   <div class="panel-body" align="center">
                     <a href="#"><img src="images/facebook.png" class="img-circle" alt="Cinque Terre" width="50" height="50"></a>&nbsp;&nbsp;
                     <a href="#"><img src="images/linkedin.png" class="img-circle" alt="Cinque Terre" width="50" height="50"></a>&nbsp;&nbsp;
