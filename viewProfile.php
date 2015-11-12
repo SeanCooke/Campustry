@@ -12,6 +12,24 @@
   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  
+  <script type="text/javascript" charset="utf-8">
+  	// assigning the JavaScript variable userId to the current user's ID using localStorage[]
+    $(document).ready(function() {
+    	var userId = localStorage['userId'];
+		$("#userId").val(userId);    
+    });
+  </script>  
+  
+  <?php
+  	/*
+  		Getting FirstName, LastName, EMail and About_Me from our database and assigning them to the
+  		variables $FirstName, $LastName, $Email and $About_Me, respectively
+  	*/
+  	// $sql = "SELECT FirstName FROM Users WHERE UserID = ";
+  	
+  ?>
+  
 </head>
 <body>
 
@@ -22,6 +40,10 @@
   <br><br><br><br>
 
   <div class="container">
+
+	<!-- input field to hold userId -->  
+    <input id="userId" name="userId" type="hidden"></input>
+                
     <div class="panel panel-default">
       <div class="panel-body">
         <div class="row">
@@ -30,16 +52,20 @@
               <div class="col-sm-4">
                 <img src="images/Koala.jpg" class="img-circle" alt="Cinque Terre" width="300" height="250">
               </div>
-              <div class="col-sm-5"><a href="#"><h3>Alan Pitch</h3></a>First year, Undergraduate, Computer Science<br><br>
+              <div class="col-sm-5"><a href="#"><h3>FirstName LastName</h3></a><!-- First year, Undergraduate, Computer Science --><br><br>
                 <span class="label label-primary">Email Address</span> : apitch@ur.rochester.edu<br><br>
+                <span class="label label-primary">About FirstName</span> : About_Me<br><br>
+<!--
                 <span class="label label-primary">Contact</span> : 585-123-4567<br><br>
                 <span class="label label-primary">Courses</span> : CSC254, CSC171, CSC170<br><br>
                 <span class="label label-primary">Skills</span> : Java, Ruby, Python<br><br>
                 <span class="label label-primary">Research Interests</span> : Programming language design<br><br>
                 <span class="label label-primary">Project/s</span> : DVCS, Automated Library System<br><br>
                 <span class="label label-primary">Hobbies</span> : Cooking, Traveling<br><br>
+-->
               </div>
               <div class="col-sm-3"><br>
+<!--
                 <button type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#myModal">Send message</button><br>
                 <div class="panel panel-default">
                   <div class="panel-heading" align="center">Connect with <b>Alan</b></div>
@@ -47,9 +73,10 @@
                     <a href="#"><img src="images/facebook.png" class="img-circle" alt="Cinque Terre" width="50" height="50"></a>&nbsp;&nbsp;
                     <a href="#"><img src="images/linkedin.png" class="img-circle" alt="Cinque Terre" width="50" height="50"></a>&nbsp;&nbsp;
                     <a href="#"><img src="images/twitter.png" class="img-circle" alt="Cinque Terre" width="50" height="50"></a>
-                  </div>
+                  </div> 
                 </div>
               </div>
+-->
             </div>
           </div>
         </div>

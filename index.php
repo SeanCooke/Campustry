@@ -81,7 +81,8 @@
 			while ($row = mysql_fetch_assoc($result)) {
 				$userId = $row['userId'];
 				$firstName = $row['firstName'];
-				echo "<script type=\"text/javascript\"> 
+				
+				echo "<script type=\"text/javascript\">
 				localStorage['userId'] = '$userId'
 				localStorage['userName'] = '$firstName'
 			</script>";

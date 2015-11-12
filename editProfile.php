@@ -13,8 +13,15 @@
   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    
+  <script type="text/javascript" charset="utf-8">
+  	// assigning the JavaScript variable userId to the current user's ID using localStorage[]
+    $(document).ready(function() {
+    	var userId = localStorage['userId'];
+		$("#userId").val(userId);    
+    });
+  </script>
   
- <!-- http://stackoverflow.com/questions/2338942/access-a-javascript-variable-from-php -->
   
 </head>
 <body>
@@ -28,6 +35,7 @@
 		require 'db_conn.php';
 		if(! get_magic_quotes_gpc() )
 		{
+			$userid = addslashes ($_POST['userId']);
 			$firstName = addslashes ($_POST['FirstName']);
 			$lastName = addslashes ($_POST['LastName']);
 			$email = addslashes ($_POST['EMail']);
@@ -36,6 +44,7 @@
 		}
 		else
 		{
+			$userid = ($_POST['userId']);
 			$firstName = $_POST['FirstName'];
 			$lastName = $_POST['LastName'];
 			$email = $_POST['EMail'];
@@ -43,7 +52,7 @@
 			$about_me = $_POST['About_Me'];
 		}
 
-		$sql = "Update Users SET FirstName=$firstName, LastName=$lastName, EMail=$email, PWD=$password WHERE UserID=$userid";
+		$sql = "Update Users SET FirstName='$firstName', LastName='$lastName', EMail='$email', PWD='$password' WHERE UserID=$userid";
 
 		$retval = mysql_query( $sql, $conn );
 		$insertId = mysql_insert_id();
@@ -51,17 +60,17 @@
 		{
 			die('Could not enter data: ' . mysql_error());
 		}
-		$sql = "INSERT INTO UsersProfile ".
-		"(userId) ".
-		"VALUES ".
-		"('$insertId')";
+		
+		$sql = "Update UsersProfile SET About_Me='$about_me' WHERE UserID=$userid";
+		
 		$retval = mysql_query( $sql, $conn );
 		if(! $retval )
 		{
 			die('Could not enter data: ' . mysql_error());
 		}
+		
 		mysql_close($conn);
-		header('Location: ./registered.php');		
+		header('Location: ./viewProfile.php');		
 		
 	}
     
@@ -86,11 +95,12 @@
 	              </div>
 	              <div class="col-sm-8"><br>
 	              	<div class="form-group">
-						<input class="form-control inputdefault" id="FirstName" name="FirstName" type="text" placeholder = "First Name"><br>
-		                <input class="form-control inputdefault" id="LastName" name="LastName" type="text" placeholder = "Last Name"><br>	                
-		                <input class="form-control inputdefault" id="EMail" name="EMail" type="text" placeholder = "Email Address"><br>
-		                <input class="form-control inputdefault" id="PWD" name="PWD" type="text" placeholder = "Password"><br>	                
-						<textarea class="form-control" rows="5" id="About_Me" name="About_Me"  placeholder = "About Me"></textarea>
+					  	<input id="userId" name="userId" type="hidden" required></input>
+					  	<input class="form-control inputdefault" id="FirstName" name="FirstName" type="text" placeholder = "First Name" required><br>
+		                <input class="form-control inputdefault" id="LastName" name="LastName" type="text" placeholder = "Last Name" required><br>	                
+		                <input class="form-control inputdefault" id="EMail" name="EMail" type="text" placeholder = "Email Address" required><br>
+		                <input class="form-control inputdefault" id="PWD" name="PWD" type="text" placeholder = "Password" required><br>	                
+						<textarea class="form-control" rows="5" id="About_Me" name="About_Me"  placeholder = "About Me" required></textarea>
 	              	</div> <!-- end form-group -->
 <!--
 	                <input class="form-control inputdefault" id="" name="" type="text" placeholder = "Contact"><br>

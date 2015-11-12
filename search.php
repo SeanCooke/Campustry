@@ -32,7 +32,7 @@
               <div class="form-group">
                 <input class="form-control input-lg" id="inputlg" type="text" placeholder = "Name, Email, Classes..."><br>
                 <button type="submit" class="btn btn-default btn-lg">
-                  <span class="glyphicon glyphicon-search"></span> Search
+                  <span class="glyphicon glyphicon-search"></span> Search <?php echo $_SESSION['userId']; ?>
                 </button>
               </div>
             </form>
