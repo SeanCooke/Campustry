@@ -33,6 +33,7 @@
 	if(isset($_POST['save']))
 	{
 		require 'db_conn.php';
+
 		if(! get_magic_quotes_gpc() )
 		{
 			$userid = addslashes ($_POST['userId']);
@@ -51,11 +52,11 @@
 			$password = $_POST['PWD'];
 			$about_me = $_POST['About_Me'];
 		}
-
+		$userid = $_SESSION['userId'];
 		$sql = "Update Users SET FirstName='$firstName', LastName='$lastName', EMail='$email', PWD='$password' WHERE UserID=$userid";
 
 		$retval = mysql_query( $sql, $conn );
-		$insertId = mysql_insert_id();
+		//$insertId = mysql_insert_id();
 		if(! $retval )
 		{
 			die('Could not enter data: ' . mysql_error());
@@ -72,8 +73,7 @@
 		mysql_close($conn);
 		header('Location: ./viewProfile.php');		
 		
-	}
-    
+	}   
   ?>
 
   <br><br><br><br>

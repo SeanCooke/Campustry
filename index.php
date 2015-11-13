@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -67,11 +70,13 @@
 		{
 			$email = addslashes ($_POST['email']);
 			$password = addslashes ($_POST['password']);
+			$rememberMe = addslashes ($_POST['rememberMe']);
 		}
 		else
 		{
 			$email = $_POST['email'];
 			$password = $_POST['password'];
+			$rememberMe = $_POST['rememberMe'];
 		}
 
 		$sql = "SELECT userId, firstName FROM Users where email = '$email' and pwd = '$password'";
@@ -81,10 +86,14 @@
 			while ($row = mysql_fetch_assoc($result)) {
 				$userId = $row['userId'];
 				$firstName = $row['firstName'];
-				
+				$_SESSION['userId'] = $userId;
+				$_SESSION['userName'] = $firstName;
+
 				echo "<script type=\"text/javascript\">
-				localStorage['userId'] = '$userId'
-				localStorage['userName'] = '$firstName'
+				if('$rememberMe'=='on'){
+					localStorage['userId'] = '$userId'
+					localStorage['userName'] = '$firstName'
+				}
 			</script>";
 			} 
 			mysql_close($conn);
@@ -122,7 +131,7 @@
 							<div class="form-group">        
 								<div class="col-sm-5">
 									<div class="checkbox">
-										<label><input type="checkbox"> Remember me</label>
+										<label><input type="checkbox" id="rememberMe" name="rememberMe"> Remember me</label>
 									</div>
 								</div>
 							</div>

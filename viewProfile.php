@@ -21,15 +21,6 @@
     });
   </script>  
   
-  <?php
-  	/*
-  		Getting FirstName, LastName, EMail and About_Me from our database and assigning them to the
-  		variables $FirstName, $LastName, $Email and $About_Me, respectively
-  	*/
-  	// $sql = "SELECT FirstName FROM Users WHERE UserID = ";
-  	
-  ?>
-  
 </head>
 <body>
 
@@ -52,9 +43,9 @@
               <div class="col-sm-4">
                 <img src="images/Koala.jpg" class="img-circle" alt="Cinque Terre" width="300" height="250">
               </div>
-              <div class="col-sm-5"><a href="#"><h3>FirstName LastName</h3></a><!-- First year, Undergraduate, Computer Science --><br><br>
-                <span class="label label-primary">Email Address</span> : apitch@ur.rochester.edu<br><br>
-                <span class="label label-primary">About FirstName</span> : About_Me<br><br>
+              <div class="col-sm-5"><a href="#"><h3><span id="firstname"></span>&nbsp;<span id="lastname"></span></h3></a><!-- First year, Undergraduate, Computer Science --><br><br>
+                <span class="label label-primary">Email Address</span> : <span id="email">apitch@ur.rochester.edu</span><br><br>
+                <span class="label label-primary">About <span id="firstnameAbout"></span> </span>: <span id="aboutme">About_Me</span><br><br>
 <!--
                 <span class="label label-primary">Contact</span> : 585-123-4567<br><br>
                 <span class="label label-primary">Courses</span> : CSC254, CSC171, CSC170<br><br>
@@ -106,5 +97,36 @@
       </div>
     </div>
   </div>
+   <?php
+    /*
+      Getting FirstName, LastName, EMail and About_Me from our database and assigning them to the
+      variables $FirstName, $LastName, $Email and $About_Me, respectively
+    */
+    require 'db_conn.php';
+    $userId = $_SESSION['userId'];
+    $sql = "SELECT u.FirstName, u.LastName, u.EMail, up.About_Me FROM Users u , UsersProfile up WHERE u.UserID = '$userId' and u.UserID = up.UserID";
+    $retval = mysql_query( $sql, $conn );
+if(! $retval )
+{
+  die('Could not get data: ' . mysql_error());
+}
+while($row = mysql_fetch_array($retval, MYSQL_ASSOC))
+{
+  $firstname = $row['FirstName'];
+  $lastname = $row['LastName'];
+  $email = $row['EMail'];
+  $aboutme = $row['About_Me'];
+         ?> <script>
+         $(document).ready(function(){
+            $("#firstname").text('<?php echo $firstname; ?>');
+            $("#firstnameAbout").text('<?php echo $firstname; ?>');
+            $("#lastname").text('<?php echo $lastname; ?>');
+            $("#email").text('<?php echo $email ?>');
+            $("#aboutme").text('<?php echo $aboutme ?>');
+         });
+           
+         </script> <?php
+} 
+  ?>
 </body>
 </html>

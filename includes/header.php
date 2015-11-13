@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,7 +15,9 @@
 		userId = localStorage['userId'] 
 		if (userName!=undefined && userId!=undefined){
 			$("#currentUser").text(userName)
-		}else{
+      
+		}else if(<?php echo isset($_SESSION['userId']) ?>){}
+    else{
 			window.location = './index.php'
 		}
 		$('a[href="#logout"]').click(function(){
@@ -46,7 +51,8 @@
       <li><a href="messages.php"><span class="glyphicon glyphicon-envelope"></span> Messages<span class="badge">2</span></a></li> 
     </ul>
     <ul class="nav navbar-nav navbar-right">
-      <li><a href="viewProfile.php"><div style="float:left"><img src="images/john_doe.jpg" class="img-circle" alt="image" width="25" height="25"> </div><div style="float:left; padding-left : 5px;" id="currentUser">John</div></a></li>
+      <li><a href="viewProfile.php"><div style="float:left"><img src="images/john_doe.jpg" class="img-circle" alt="image" width="25" height="25"> </div>
+      <div style="float:left; padding-left : 5px;" id="currentUser"><?php if(isset($_SESSION['userId'])) {echo $_SESSION['userName'];} ?></div></a></li>
       <li><a href="#"><span class="glyphicon glyphicon-cog"></span> Settings</a></li>
       <li><a href="#logout"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
     </ul>
