@@ -11,15 +11,16 @@ session_start();
 
 <script type="text/javascript">
 	$(document).ready(function(){
+		// Adding 'Remember Me Functionality
 		userName = localStorage['userName'] 
-		userId = localStorage['userId'] 
+		userId = localStorage['userId']
+		// if the user has campustry in their localstorage
 		if (userName!=undefined && userId!=undefined){
-			$("#currentUser").text(userName)
-      
-		}else if(<?php echo isset($_SESSION['userId']) ?>){}
-    else{
-			window.location = './index.php'
+			// set session variables to those stored in cookies
+			// as per - http://www.downwithdesign.com/web-development-tutorials/adding-remember-feature-php-login-script/
 		}
+		
+		// Logging the user out
 		$('a[href="#logout"]').click(function(){
   			localStorage.removeItem('userName')
 			localStorage.removeItem('userId') 
