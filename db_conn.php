@@ -1,5 +1,5 @@
 <?php 
-$dbhost = 'localhost:3306@';
+$dbhost = 'localhost';
 $dbuser = 'root';
 $dbpass = '7gw3rJ7q';
 $conn = @mysql_connect($dbhost, $dbuser, $dbpass);
