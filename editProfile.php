@@ -1,10 +1,5 @@
 <!DOCTYPE html>
 
-<?php
-	error_reporting(E_ALL);
-	ini_set('display_errors', 1);
-?>
-
 <html lang="en">
 <head>
   <title>Campustry | Edit Profile</title>
@@ -13,22 +8,22 @@
   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-    
+
   <script type="text/javascript" charset="utf-8">
   	// assigning the JavaScript variable userId to the current user's ID using localStorage[]
     $(document).ready(function() {
     	var userId = localStorage['userId'];
-		$("#userId").val(userId);    
+		$("#userId").val(userId);
     });
   </script>
-  
-  
+
+
 </head>
 <body>
 
   <?php
     require 'includes/header.php';
-    
+
     // Processing Form Submission
 	if(isset($_POST['save']))
 	{
@@ -61,19 +56,19 @@
 		{
 			die('Could not enter data: ' . mysql_error());
 		}
-		
+
 		$sql = "Update UsersProfile SET About_Me='$about_me' WHERE UserID=$userid";
-		
+
 		$retval = mysql_query( $sql, $conn );
 		if(! $retval )
 		{
 			die('Could not enter data: ' . mysql_error());
 		}
-		
+
 		mysql_close($conn);
-		header('Location: ./viewProfile.php');		
-		
-	}   
+		header('Location: ./viewProfile.php');
+
+	}
   ?>
 
   <br><br><br><br>
@@ -97,9 +92,9 @@
 	              	<div class="form-group">
 					  	<input id="userId" name="userId" type="hidden" required></input>
 					  	<input class="form-control inputdefault" id="FirstName" name="FirstName" type="text" placeholder = "First Name" required><br>
-		                <input class="form-control inputdefault" id="LastName" name="LastName" type="text" placeholder = "Last Name" required><br>	                
+		                <input class="form-control inputdefault" id="LastName" name="LastName" type="text" placeholder = "Last Name" required><br>
 		                <input class="form-control inputdefault" id="EMail" name="EMail" type="text" placeholder = "Email Address" required><br>
-		                <input class="form-control inputdefault" id="PWD" name="PWD" type="text" placeholder = "Password" required><br>	                
+		                <input class="form-control inputdefault" id="PWD" name="PWD" type="text" placeholder = "Password" required><br>
 						<textarea class="form-control" rows="5" id="About_Me" name="About_Me"  placeholder = "About Me" required></textarea>
 	              	</div> <!-- end form-group -->
 <!--
@@ -111,7 +106,7 @@
 	                <input class="form-control inputdefault" id="" name="" type="text" placeholder = "Hobbies"><br>
 -->
 	              </div> <!-- end col-sm-8 -->
-	              
+
 <!--
 	              <div class="col-sm-3"><br>
 	                <div class="panel panel-default">
@@ -128,12 +123,12 @@
 	              </div>
 	            </div>
 -->
-	          
+
 	          </div>
 	        </div>
 	      </div>
 	      <div class="panel-footer">
-	        <ul class="pager">	        	
+	        <ul class="pager">
 	          <button type="submit" name="save" class="btn btn-default">Save</button>
 	          <button type="submit" name="Discard" class="btn btn-default">Discard</button>
 	        </ul>
