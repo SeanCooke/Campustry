@@ -34,20 +34,20 @@
 <ul class="list-group">
     <?php
     	$query = $_GET['query'];
-    	$query_sql = "SELECT U.FirstName, U.LastName, U.EMail, P.About_Me 
-     				    FROM Users U Left Join UsersProfile P
-					      ON U.UserID = P.UserID
-					   WHERE U.FirstName like '%$query%' or U.LastName like '%$query%' or U.EMail like '%$query%' or P.About_Me like '%$query%'";
+    	$query_sql = "SELECT U.UserId, U.FirstName, U.LastName, U.EMail, P.About_Me
+     				          FROM Users U Left Join UsersProfile P
+					              ON U.UserID = P.UserID
+					           WHERE U.FirstName like '%$query%' or U.LastName like '%$query%' or U.EMail like '%$query%' or P.About_Me like '%$query%'";
 		$query_result = mysql_query($query_sql, $conn);
 		while($query_row = mysql_fetch_array($query_result, MYSQL_ASSOC)){
 			echo "<li class='list-group-item'>
 				  	<div class='row'>
 			  			<img src='images/Koala.jpg' class='img-circle' alt='Cinque Terre' width='100' height='80'>
 			  			<div class='col-sm-8'>
-			  				<a href='viewProfile.php'><h3>".$query_row['FirstName']." ".$query_row['LastName']."</h3></a><a href='mailto:".$query_row['EMail']."'>".$query_row['EMail']."</a><br>".$query_row['About_Me']."
+			  				<a href='viewProfile.php?userId=".$query_row['UserId']."'><h3>".$query_row['FirstName']." ".$query_row['LastName']."</h3></a><a href='mailto:".$query_row['EMail']."'>".$query_row['EMail']."</a><br>".$query_row['About_Me']."
 			  			</div>
 				  </li>";
-		}  
+		}
     ?>
 </ul></div>
 <div class="col-sm-2"></div></div>

@@ -14,14 +14,14 @@ session_start();
 <body>
 <script type="text/javascript">
 	$(document).ready(function(){
-		userName = localStorage['userName'] 
-		userId = localStorage['userId'] 
+		userName = localStorage['userName']
+		userId = localStorage['userId']
 		if (userName!=undefined && userId!=undefined){
 			window.location = 'search.php'
 		}
 	});
 	</script>
-	<?php 
+	<?php
 	if(isset($_POST['signUp']))
 	{
 		require 'db_conn.php';
@@ -88,14 +88,14 @@ session_start();
 				$firstName = $row['firstName'];
 				$_SESSION['userId'] = $userId;
 				$_SESSION['userName'] = $firstName;
-
+				
 				echo "<script type=\"text/javascript\">
 				if('$rememberMe'=='on'){
 					localStorage['userId'] = '$userId'
 					localStorage['userName'] = '$firstName'
 				}
 			</script>";
-			} 
+			}
 			mysql_close($conn);
 			echo " <script> window.location = 'search.php'</script> ";
 		}
@@ -109,7 +109,7 @@ session_start();
 	?>
 	<div class="container">
 		<div class="page-header" align="center" style="background-color:black;color:#f0f0f0"><br>
-			<h1>Welcome to Campustry</h1> 
+			<h1>Welcome to Campustry</h1>
 			<p>An academic networking site that connects you with students and faculties</p><br>
 		</div>
 		<div class="row">
@@ -123,19 +123,19 @@ session_start();
 									<input type="email" class="form-control" name="email" id="email" placeholder="Email">
 								</div>
 							</div>
-							<div class="form-group">     
-								<div class="col-sm-10">          
+							<div class="form-group">
+								<div class="col-sm-10">
 									<input type="password" class="form-control" name="password" id="password" placeholder="Password">
 								</div>
 							</div>
-							<div class="form-group">        
+							<div class="form-group">
 								<div class="col-sm-5">
 									<div class="checkbox">
 										<label><input type="checkbox" id="rememberMe" name="rememberMe"> Remember me</label>
 									</div>
 								</div>
 							</div>
-							<div class="form-group">        
+							<div class="form-group">
 								<div class="col-sm-5">
 									<button type="submit" class="btn btn-default" name="signIn" id="signIn">Sign in</button><br><br>
 									<p id="status"><font color="red"><?php echo $_GET['status']; ?></font></p>
@@ -155,8 +155,8 @@ session_start();
 									<input type="text" class="form-control" name="firstName" id="firstName" placeholder="First name">
 								</div>
 							</div>
-							<div class="form-group">     
-								<div class="col-sm-10">          
+							<div class="form-group">
+								<div class="col-sm-10">
 									<input type="text" class="form-control" name = "lastName" id="lastName" placeholder="Last name">
 								</div>
 							</div>
@@ -165,12 +165,12 @@ session_start();
 									<input type="email" class="form-control" name = "email" id="email" placeholder="Email">
 								</div>
 							</div>
-							<div class="form-group">     
-								<div class="col-sm-10">          
+							<div class="form-group">
+								<div class="col-sm-10">
 									<input type="password" class="form-control" name = "password" id="password" placeholder="Password">
 								</div>
 							</div>
-							<div class="form-group">        
+							<div class="form-group">
 								<div class="col-sm-5">
 									<button type="submit" class="btn btn-default" name="signUp" id="signUp">Sign up</button>
 								</div>
