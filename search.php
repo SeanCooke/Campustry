@@ -11,10 +11,7 @@
 <body>
 
   <?php
-    require 'includes/header.php';
-    
-    // 
-    
+    require 'includes/header.php';    
   ?>
 
   <br><br><br><br>
