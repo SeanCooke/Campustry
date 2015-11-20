@@ -33,11 +33,11 @@
 <div class="col-sm-8">
 <ul class="list-group">
     <?php
-    	$query = $_GET['query'];
+    	$query = $_GET['typeahead'];
     	$query_sql = "SELECT U.UserId, U.FirstName, U.LastName, U.EMail, P.About_Me
      				          FROM Users U Left Join UsersProfile P
 					              ON U.UserID = P.UserID
-					           WHERE U.FirstName like '%$query%' or U.LastName like '%$query%' or U.EMail like '%$query%' or P.About_Me like '%$query%'";
+					           WHERE U.FirstName like '%$query%' or U.LastName like '%$query%' or CONCAT(U.FirstName, ' ', U.LastName) like '%$query%' or U.EMail like '%$query%' or P.About_Me like '%$query%'";
 		$query_result = mysql_query($query_sql, $conn);
 		while($query_row = mysql_fetch_array($query_result, MYSQL_ASSOC)){
 			echo "<li class='list-group-item'>

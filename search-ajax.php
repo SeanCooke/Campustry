@@ -4,7 +4,7 @@
     $array = array();
     $query=mysql_query("SELECT *
     					  FROM Users
-    				     WHERE FirstName LIKE '$key%' OR LastName LIKE '$key%'");
+    				     WHERE CONCAT(FirstName, ' ', LastName) LIKE '$key%' OR LastName LIKE '$key%'");
     while($row=mysql_fetch_assoc($query))
     {
       $array[] = $row['FirstName'].' '.$row['LastName'];

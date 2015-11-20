@@ -5,7 +5,8 @@
 <html>
 <head>
 	<title></title>
-	<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+	<!-- Commented out to restore AJAX functionality on search.php-->
+	<!-- <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script> -->
 </head>
 <body>
 
