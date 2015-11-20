@@ -36,7 +36,8 @@
             <form role="form" method="GET" action="searchResults.php">
               <div class="form-group">
 <!--                 <input class="form-control input-lg" id="inputlg" type="text" name="query" placeholder = "Name, Email, About Me"><br> -->
-					 <input class="typeahead tt-query" id="inputlg" type="text" name="typeahead" autocomplete="off" spellcheck="false" placeholder = "Name, Email, About Me"><br><br>
+					 <input class="typeahead tt-query" id="inputlg" type="text" name="typeahead" autocomplete="off" spellcheck="false" placeholder = "Name, Email, About Me"><br>
+				<br>
                 <button type="submit" class="btn btn-default btn-lg">
                   <span class="glyphicon glyphicon-search"></span> Search
                 </button>
