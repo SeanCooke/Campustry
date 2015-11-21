@@ -96,6 +96,30 @@ session_start();
 				}
 			</script>";
 			}
+
+			/*
+				Check to see if this user is active.
+				If Active=0 in the table UsersProfile,
+				Set Active=1 and redirect them to
+				search.php
+			*/
+			$active_check_sql = "SELECT Active
+													 	 FROM UsersProfile
+														WHERE UserID=".$_SESSION['userId'];
+			$active_check_result = mysql_query($active_check_sql, $conn );
+			while ($active_check_row = mysql_fetch_assoc($active_check_result)) {
+				$Active = $row['Active'];
+			}
+			if($Active == 0) {
+				$active_update_sql = "UPDATE UsersProfile
+																 SET Active = 1
+ 															 WHERE UserID =".$_SESSION['userId'];
+				$active_update_result = mysql_query($active_update_sql, $conn);
+		 		if(!$active_update_result)
+		 		{
+		 			die('Could not enter data: ' . mysql_error());
+		 		}
+			}
 			mysql_close($conn);
 			echo " <script> window.location = 'search.php'</script> ";
 		}

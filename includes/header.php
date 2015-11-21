@@ -55,7 +55,12 @@
     <ul class="nav navbar-nav navbar-right">
       <li><a href="viewProfile.php?userId=<?php echo $_SESSION['userId']; ?>"><div style="float:left"><img src="images/john_doe.jpg" class="img-circle" alt="image" width="25" height="25"> </div>
       <div style="float:left; padding-left : 5px;" id="currentUser"><?php echo $_SESSION['userName']; ?></div></a></li>
-      <!-- <li><a href="#"><span class="glyphicon glyphicon-cog"></span> Settings</a></li> -->
+      <li><a class="dropdown-toggle" data-toggle="dropdown" href=""><span class="glyphicon glyphicon-cog"></span> Settings
+				<span class="caret"></span></a>
+				<ul class="dropdown-menu">
+					<li><a href="deleteProfile.php">Delete Campustry Profile</a></li>
+				</ul>
+			</li>
       <li><a href="#logout"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
     </ul>
   </div>

@@ -2,9 +2,10 @@
 	require_once('/var/www/html/db_conn.php');
     $key=$_GET['key'];
     $array = array();
-    $query=mysql_query("SELECT *
-    					  FROM Users
-    				     WHERE CONCAT(FirstName, ' ', LastName) LIKE '$key%' OR LastName LIKE '$key%'");
+    $query=mysql_query("SELECT U.FirstName, U.LastName
+    					  					FROM Users U LEFT JOIN UsersProfile P
+													  ON U.UserID = P.UserID
+    				     				 WHERE P.Active = 1 AND (CONCAT(U.FirstName, ' ', U.LastName) LIKE '$key%' OR U.LastName LIKE '$key%')");
     while($row=mysql_fetch_assoc($query))
     {
       $array[] = $row['FirstName'].' '.$row['LastName'];
