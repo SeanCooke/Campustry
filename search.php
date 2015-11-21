@@ -7,14 +7,14 @@
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
-    <link rel="stylesheet" href="/css/typeahead.css">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="/css/typeahead.css">
     <script src="/scripts/typeahead.min.js"></script>
 </head>
 <body>
 
   <?php
-    require 'includes/header.php';    
+    require 'includes/header.php';
   ?>
 
   <br><br><br><br>

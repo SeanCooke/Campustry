@@ -88,7 +88,7 @@ session_start();
 				$firstName = $row['firstName'];
 				$_SESSION['userId'] = $userId;
 				$_SESSION['userName'] = $firstName;
-				
+
 				echo "<script type=\"text/javascript\">
 				if('$rememberMe'=='on'){
 					localStorage['userId'] = '$userId'
