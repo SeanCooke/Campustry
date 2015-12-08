@@ -11,15 +11,15 @@ session_start();
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 </head>
-<body>
-<script type="text/javascript">
-	$(document).ready(function(){
-		userName = localStorage['userName']
-		userId = localStorage['userId']
-		if (userName!=undefined && userId!=undefined){
-			window.location = 'search.php'
-		}
-	});
+<body background="images/bg7.jpg">
+	<script type="text/javascript">
+		$(document).ready(function(){
+			<?php if(isset($_COOKIE["userId"]) && isset($_COOKIE["userName"]) ) {
+				$_SESSION['userId'] = $_COOKIE["userId"];
+				$_SESSION['userName'] = $_COOKIE["userName"];
+				header('Location: ./search.php');
+			} ?>
+		});
 	</script>
 	<?php
 	if(isset($_POST['signUp']))
@@ -79,22 +79,23 @@ session_start();
 			$rememberMe = $_POST['rememberMe'];
 		}
 
-		$sql = "SELECT userId, firstName FROM Users where email = '$email' and pwd = '$password'";
+		$sql = "SELECT u.userId, u.firstName, up.image FROM Users u, UsersProfile up where u.email = '$email' and u.PWD = '$password' and u.UserID = up.UserID";
 		$result = mysql_query( $sql, $conn );
 
 		if (mysql_num_rows($result)>0) {
 			while ($row = mysql_fetch_assoc($result)) {
 				$userId = $row['userId'];
 				$firstName = $row['firstName'];
+				$userImage = $row['image'];
 				$_SESSION['userId'] = $userId;
 				$_SESSION['userName'] = $firstName;
+				$_SESSION['userImage'] = $userImage;
 
-				echo "<script type=\"text/javascript\">
-				if('$rememberMe'=='on'){
-					localStorage['userId'] = '$userId'
-					localStorage['userName'] = '$firstName'
+				if($rememberMe == 'on'){
+					setcookie('userId',$userId,time() + (10 * 365 * 24 * 60 * 60),"/");
+					setcookie('userName',$firstName,time() + (10 * 365 * 24 * 60 * 60),"/");
+					setcookie('userImage',$userImage,time() + (10 * 365 * 24 * 60 * 60),"/");
 				}
-			</script>";
 			}
 
 			/*
@@ -103,110 +104,110 @@ session_start();
 				Set Active=1 and redirect them to
 				search.php
 			*/
-			$active_check_sql = "SELECT Active
-													 	 FROM UsersProfile
-														WHERE UserID=".$_SESSION['userId'];
-			$active_check_result = mysql_query($active_check_sql, $conn );
-			while ($active_check_row = mysql_fetch_assoc($active_check_result)) {
-				$Active = $row['Active'];
+				$active_check_sql = "SELECT Active
+				FROM UsersProfile
+				WHERE UserID=".$_SESSION['userId'];
+				$active_check_result = mysql_query($active_check_sql, $conn );
+				while ($active_check_row = mysql_fetch_assoc($active_check_result)) {
+					$Active = $row['Active'];
+				}
+				if($Active == 0) {
+					$active_update_sql = "UPDATE UsersProfile
+					SET Active = 1
+					WHERE UserID =".$_SESSION['userId'];
+					$active_update_result = mysql_query($active_update_sql, $conn);
+					if(!$active_update_result)
+					{
+						die('Could not enter data: ' . mysql_error());
+					}
+				}
+				mysql_close($conn);
+				echo " <script> window.location = 'search.php'</script> ";
 			}
-			if($Active == 0) {
-				$active_update_sql = "UPDATE UsersProfile
-																 SET Active = 1
- 															 WHERE UserID =".$_SESSION['userId'];
-				$active_update_result = mysql_query($active_update_sql, $conn);
-		 		if(!$active_update_result)
-		 		{
-		 			die('Could not enter data: ' . mysql_error());
-		 		}
+			else {
+				echo "<script> window.location = 'index.php?status=Invalid Username or Password!';</script> ";
+				mysql_close($conn);
 			}
-			mysql_close($conn);
-			echo " <script> window.location = 'search.php'</script> ";
 		}
-		else {
-		echo "<script> window.location = 'index.php?status=Invalid Username or Password!';</script> ";
-		mysql_close($conn);
-		}
-	}
-	else
-	{
-	?>
-	<div class="container">
-		<div class="page-header" align="center" style="background-color:black;color:#f0f0f0"><br>
-			<h1>Welcome to Campustry</h1>
-			<p>An academic networking site that connects you with students and faculties</p><br>
-		</div>
-		<div class="row">
-			<div class="col-sm-6">
-				<div class="panel panel-default">
-					<div class="panel-heading">Sign in</div>
-					<div class="panel-body">
-						<form class="form-horizontal" role="form" method="post" action="<?php $_PHP_SELF ?>">
-							<div class="form-group">
-								<div class="col-sm-10">
-									<input type="email" class="form-control" name="email" id="email" placeholder="Email">
-								</div>
-							</div>
-							<div class="form-group">
-								<div class="col-sm-10">
-									<input type="password" class="form-control" name="password" id="password" placeholder="Password">
-								</div>
-							</div>
-							<div class="form-group">
-								<div class="col-sm-5">
-									<div class="checkbox">
-										<label><input type="checkbox" id="rememberMe" name="rememberMe"> Remember me</label>
+		else
+		{
+			?>
+			<div class="container">
+				<div class="page-header" align="center" style="background-color:black;color:#f0f0f0"><br>
+					<h1>Welcome to Campustry</h1>
+					<p>An academic networking site that connects you with students and faculties</p><br>
+				</div>
+				<div class="row">
+					<div class="col-sm-6">
+						<div class="panel panel-default">
+							<div class="panel-heading">Sign in</div>
+							<div class="panel-body">
+								<form class="form-horizontal" role="form" method="post" action="<?php $_PHP_SELF ?>">
+									<div class="form-group">
+										<div class="col-sm-10">
+											<input type="email" class="form-control" name="email" id="email" placeholder="Email">
+										</div>
 									</div>
-								</div>
+									<div class="form-group">
+										<div class="col-sm-10">
+											<input type="password" class="form-control" name="password" id="password" placeholder="Password">
+										</div>
+									</div>
+									<div class="form-group">
+										<div class="col-sm-5">
+											<div class="checkbox">
+												<label><input type="checkbox" id="rememberMe" name="rememberMe"> Remember me</label>
+											</div>
+										</div>
+									</div>
+									<div class="form-group">
+										<div class="col-sm-5">
+											<button type="submit" class="btn btn-default" name="signIn" id="signIn">Sign in</button><br><br>
+											<p id="status"><font color="red"><?php echo $_GET['status']; ?></font></p>
+										</div>
+									</div>
+								</form>
 							</div>
-							<div class="form-group">
-								<div class="col-sm-5">
-									<button type="submit" class="btn btn-default" name="signIn" id="signIn">Sign in</button><br><br>
-									<p id="status"><font color="red"><?php echo $_GET['status']; ?></font></p>
-								</div>
+						</div>
+					</div>
+					<div class="col-sm-6">
+						<div class="panel panel-default">
+							<div class="panel-heading">Sign up</div>
+							<div class="panel-body">
+								<form class="form-horizontal" role="form" method="post" action="<?php $_PHP_SELF ?>">
+									<div class="form-group">
+										<div class="col-sm-10">
+											<input type="text" class="form-control" name="firstName" id="firstName" placeholder="First name">
+										</div>
+									</div>
+									<div class="form-group">
+										<div class="col-sm-10">
+											<input type="text" class="form-control" name = "lastName" id="lastName" placeholder="Last name">
+										</div>
+									</div>
+									<div class="form-group">
+										<div class="col-sm-10">
+											<input type="email" class="form-control" name = "email" id="email" placeholder="Email">
+										</div>
+									</div>
+									<div class="form-group">
+										<div class="col-sm-10">
+											<input type="password" class="form-control" name = "password" id="password" placeholder="Password">
+										</div>
+									</div>
+									<div class="form-group">
+										<div class="col-sm-5">
+											<button type="submit" class="btn btn-default" name="signUp" id="signUp">Sign up</button>
+										</div>
+									</div>
+								</form>
 							</div>
-						</form>
+						</div>
 					</div>
 				</div>
 			</div>
-			<div class="col-sm-6">
-				<div class="panel panel-default">
-					<div class="panel-heading">Sign up</div>
-					<div class="panel-body">
-						<form class="form-horizontal" role="form" method="post" action="<?php $_PHP_SELF ?>">
-							<div class="form-group">
-								<div class="col-sm-10">
-									<input type="text" class="form-control" name="firstName" id="firstName" placeholder="First name">
-								</div>
-							</div>
-							<div class="form-group">
-								<div class="col-sm-10">
-									<input type="text" class="form-control" name = "lastName" id="lastName" placeholder="Last name">
-								</div>
-							</div>
-							<div class="form-group">
-								<div class="col-sm-10">
-									<input type="email" class="form-control" name = "email" id="email" placeholder="Email">
-								</div>
-							</div>
-							<div class="form-group">
-								<div class="col-sm-10">
-									<input type="password" class="form-control" name = "password" id="password" placeholder="Password">
-								</div>
-							</div>
-							<div class="form-group">
-								<div class="col-sm-5">
-									<button type="submit" class="btn btn-default" name="signUp" id="signUp">Sign up</button>
-								</div>
-							</div>
-						</form>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<?php
-}
-?>
-</body>
-</html>
+			<?php
+		}
+		?>
+	</body>
+	</html>
